@@ -3,6 +3,6 @@ import IZpdic from './IZpdic';
 
 export default interface IOtm {
   words: IWord[];
-  version: number;
+  version?: number;
   zpdic?: IZpdic;
 }

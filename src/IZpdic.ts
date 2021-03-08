@@ -1,8 +1,8 @@
 import IWord from './IWord';
 
 export default interface IZpdic {
-  alphabetOrder: string;
-  plainInformationTitles: number;
-  informationTitleOrder?: string[];
-  defaultWord: IWord;
+  alphabetOrder?: string;
+  plainInformationTitles?: string[];
+  informationTitleOrder?: null | string[];
+  defaultWord?: null | IWord;
 }
