@@ -1,8 +1,14 @@
 # otamajakushi
 
-Otamajakushiは、OTM-JSON（OneToMany-JSON）を解析するライブラリです。
+Otamajakushi is a library which parses OTM-JSON (OneToMany-JSON)
 
-## サンプルプログラム
+## Installation
+
+```sh
+npm i otamajakushi
+```
+
+## Sample
 
 ```ts
 import * as fs from 'fs';
@@ -10,11 +16,11 @@ import OTMJSON from 'otamajakushi';
 
 const json = fs.readFileSync('./dictionary.json', 'utf8');
 const dictionary = OTMJSON.parse(json);
-console.log(dictionary.words.length); // 辞書の単語数を調べる
+console.log(dictionary.words.length); // Print the number of words in the dictionary
 ```
 
 ## Version
 
 ### Version 1.0.0
 
-- Otamajakushi リリース
+- Release Otamajakushi
