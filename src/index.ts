@@ -12,42 +12,42 @@ import {
   DecoderError,
   Result,
 } from '@mojotech/json-type-validation';
-import IOtm from './IOtm';
-import IEntry from './IEntry';
-import IWord from './IWord';
-import IZpdic from './IZpdic';
-import ITranslation from './ITranslation';
-import IVariation from './IVariation';
-import IContent from './IContent';
-import IRelation from './IRelation';
+import Otm from './Otm';
+import Entry from './Entry';
+import Word from './Word';
+import Zpdic from './Zpdic';
+import Translation from './Translation';
+import Variation from './Variation';
+import Content from './Content';
+import Relation from './Relation';
 
 class OTMJSON {
-  static entryDecoder: Decoder<IEntry> = object({
+  static entryDecoder: Decoder<Entry> = object({
     id: number(),
     form: string(),
   });
 
-  static translationDecoder: Decoder<ITranslation> = object({
+  static translationDecoder: Decoder<Translation> = object({
     title: string(),
     forms: array(string()),
   });
 
-  static contentDecoder: Decoder<IContent> = object({
+  static contentDecoder: Decoder<Content> = object({
     title: string(),
     text: string(),
   });
 
-  static variationDecoder: Decoder<IVariation> = object({
+  static variationDecoder: Decoder<Variation> = object({
     title: string(),
     form: string(),
   });
 
-  static relationDecoder: Decoder<IRelation> = object({
+  static relationDecoder: Decoder<Relation> = object({
     title: string(),
     entry: OTMJSON.entryDecoder,
   });
 
-  static wordDecoder: Decoder<IWord> = object({
+  static wordDecoder: Decoder<Word> = object({
     entry: OTMJSON.entryDecoder,
     translations: array(OTMJSON.translationDecoder),
     tags: array(string()),
@@ -56,14 +56,14 @@ class OTMJSON {
     relations: array(OTMJSON.relationDecoder),
   });
 
-  static zpdicDecoder: Decoder<IZpdic> = object({
+  static zpdicDecoder: Decoder<Zpdic> = object({
     alphabetOrder: optional(string()),
     plainInformationTitles: optional(array(string())),
     informationTitleOrder: optional(union(constant(null), array(string()))),
     defaultWord: optional(union(constant(null), OTMJSON.wordDecoder)),
   });
 
-  static otmDecoder: Decoder<IOtm> = object({
+  static otmDecoder: Decoder<Otm> = object({
     words: array(OTMJSON.wordDecoder),
     version: optional(number()),
     zpdic: optional(OTMJSON.zpdicDecoder),
@@ -74,7 +74,7 @@ class OTMJSON {
     reviver?:
       | ((this: unknown, key: string, value: unknown) => unknown)
       | undefined,
-  ): IOtm => OTMJSON.otmDecoder.runWithException(JSON.parse(text, reviver));
+  ): Otm => OTMJSON.otmDecoder.runWithException(JSON.parse(text, reviver));
 
   static run = (
     text: string,

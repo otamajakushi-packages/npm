@@ -1,4 +1,4 @@
-export default interface ITranslation {
+export default interface Translation {
   title: string;
   forms: string[];
 }

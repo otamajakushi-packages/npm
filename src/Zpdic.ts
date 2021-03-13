@@ -1,8 +1,8 @@
-import IWord from './IWord';
+import Word from './Word';
 
-export default interface IZpdic {
+export default interface Zpdic {
   alphabetOrder?: string;
   plainInformationTitles?: string[];
   informationTitleOrder?: null | string[];
-  defaultWord?: null | IWord;
+  defaultWord?: null | Word;
 }

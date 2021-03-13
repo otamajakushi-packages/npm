@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import OTMJSON from '../src';
-import IOtm from '../src/IOtm';
+import Otm from '../src/Otm';
 
 describe('OTMJSON', (): void => {
   test('OTMJSON.parse', (): void => {
@@ -9,16 +9,16 @@ describe('OTMJSON', (): void => {
     expect(dictionary.words.length).toBe(8);
   });
 
-  interface IZpdicOnline {
+  interface ZpdicOnline {
     enableMarkdown: boolean
   }
 
-  interface ICustomOtm extends IOtm {
-    zpdicOnline: IZpdicOnline;
+  interface CustomOtm extends Otm {
+    zpdicOnline: ZpdicOnline;
   }
 
-  function hasZpdicOnline(otm: IOtm | ICustomOtm | Record<string, unknown>): otm is ICustomOtm {
-    return (otm as ICustomOtm).zpdicOnline !== undefined;
+  function hasZpdicOnline(otm: Otm | CustomOtm | Record<string, unknown>): otm is CustomOtm {
+    return (otm as CustomOtm).zpdicOnline !== undefined;
   }
 
   test('OTMJSON.run', (): void => {
