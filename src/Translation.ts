@@ -1,4 +1,4 @@
-export default interface Translation {
+export type Translation = {
   title: string;
   forms: string[];
 }

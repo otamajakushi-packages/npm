@@ -1,4 +1,4 @@
-export default interface Content {
+export type Content = {
   title: string;
   text: string;
 }

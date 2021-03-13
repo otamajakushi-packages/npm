@@ -12,14 +12,14 @@ import {
   DecoderError,
   Result,
 } from '@mojotech/json-type-validation';
-import Otm from './Otm';
-import Entry from './Entry';
-import Word from './Word';
-import Zpdic from './Zpdic';
-import Translation from './Translation';
-import Variation from './Variation';
-import Content from './Content';
-import Relation from './Relation';
+import { Otm } from './Otm';
+import { Entry } from './Entry';
+import { Word } from './Word';
+import { Zpdic } from './Zpdic';
+import { Translation } from './Translation';
+import { Variation } from './Variation';
+import { Content } from './Content';
+import { Relation } from './Relation';
 
 class OTMJSON {
   static entryDecoder: Decoder<Entry> = object({

@@ -1,4 +1,4 @@
-export default interface Variation {
+export type Variation = {
   title: string;
   form: string;
 }

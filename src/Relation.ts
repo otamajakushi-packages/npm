@@ -1,6 +1,6 @@
-import Entry from './Entry';
+import { Entry } from './Entry';
 
-export default interface Relation {
+export type Relation = {
   title: string;
   entry: Entry;
-}
+};

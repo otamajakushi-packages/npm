@@ -1,4 +1,4 @@
-export default interface Entry {
+export type Entry = {
   id: number;
   form: string;
 }

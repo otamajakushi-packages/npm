@@ -1,8 +1,8 @@
-import Word from './Word';
+import { Word } from './Word';
 
-export default interface Zpdic {
+export type Zpdic = {
   alphabetOrder?: string;
   plainInformationTitles?: string[];
   informationTitleOrder?: null | string[];
   defaultWord?: null | Word;
-}
+};

@@ -1,8 +1,8 @@
-import Word from './Word';
-import Zpdic from './Zpdic';
+import { Word } from './Word';
+import { Zpdic } from './Zpdic';
 
-export default interface Otm {
+export type Otm = {
   words: Word[];
   version?: number;
   zpdic?: Zpdic;
-}
+};
