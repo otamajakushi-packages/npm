@@ -11,4 +11,5 @@ export default interface IWord {
   contents: IContent[],
   variations: IVariation[],
   relations: IRelation[],
+  [prop: string]: unknown,
 }

@@ -7,6 +7,10 @@ import {
   array,
   constant,
   union,
+  dict,
+  anyJson,
+  DecoderError,
+  Result,
 } from '@mojotech/json-type-validation';
 import IOtm from './IOtm';
 import IEntry from './IEntry';
@@ -71,6 +75,14 @@ class OTMJSON {
       | ((this: unknown, key: string, value: unknown) => unknown)
       | undefined,
   ): IOtm => OTMJSON.otmDecoder.runWithException(JSON.parse(text, reviver));
+
+  static run = (
+    text: string,
+    reviver?:
+      | ((this: unknown, key: string, value: unknown) => unknown)
+      | undefined,
+  ): Result.Result<Record<string, unknown>, DecoderError> =>
+    dict(anyJson()).run(JSON.parse(text, reviver));
 }
 
 export default OTMJSON;
