@@ -19,7 +19,13 @@ const dictionary = OTMJSON.parse(json);
 console.log(dictionary.words.length); // Print the number of words in the dictionary
 ```
 
+See also [otamajakushi-sample (Japanese)](https://github.com/skytomo221/otamajakushi-npm-sample)
+
 ## Version
+
+### Version 1.1.0
+
+- Add "zpdicOnline"
 
 ### Version 1.0.0
 
