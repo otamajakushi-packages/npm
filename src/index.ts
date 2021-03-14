@@ -11,9 +11,9 @@ import {
   anyJson,
   DecoderError,
   Result,
-  intersection,
+  boolean,
 } from '@mojotech/json-type-validation';
-import { ContentWithMarkdown, Otm, OtmWithMarkdown, WordWithMarkdown } from './Otm';
+import { Otm } from './Otm';
 import { Entry } from './Entry';
 import { Word } from './Word';
 import { Zpdic } from './Zpdic';
@@ -21,6 +21,7 @@ import { Translation } from './Translation';
 import { Variation } from './Variation';
 import { Content } from './Content';
 import { Relation } from './Relation';
+import { ZpdicOnline } from './ZpdicOnline';
 
 class OTMJSON {
   static entryDecoder: Decoder<Entry> = object({
@@ -36,6 +37,7 @@ class OTMJSON {
   static contentDecoder: Decoder<Content> = object({
     title: string(),
     text: string(),
+    markdown: optional(string()),
   });
 
   static variationDecoder: Decoder<Variation> = object({
@@ -64,48 +66,17 @@ class OTMJSON {
     defaultWord: optional(union(constant(null), OTMJSON.wordDecoder)),
   });
 
-  static contentWithMarkdownDecoder: Decoder<ContentWithMarkdown> = object({
-    title: string(),
-    text: string(),
-    markdown: string(),
+  static zpdicOnlineDecoder: Decoder<ZpdicOnline> = object({
+    explanation: string(),
+    enableMarkdown: boolean(),
   });
 
-  static wordWithMarkdownDecoder: Decoder<WordWithMarkdown> = object( {
-    entry: OTMJSON.entryDecoder,
-    translations: array(OTMJSON.translationDecoder),
-    tags: array(string()),
-    contents: array(OTMJSON.contentWithMarkdownDecoder),
-    variations: array(OTMJSON.variationDecoder),
-    relations: array(OTMJSON.relationDecoder),
-  });
-
-  static otmWithMarkdownDecoder: Decoder<OtmWithMarkdown> = object( {
-    words: array(OTMJSON.wordWithMarkdownDecoder),
+  static otmDecoder: Decoder<Otm> = object({
+    words: array(OTMJSON.wordDecoder),
     version: optional(number()),
     zpdic: optional(OTMJSON.zpdicDecoder),
-    zpdicOnline: object( {
-      explanation: string(),
-      enableMarkdown: constant(true),
-    }),
+    zpdicOnline: optional(OTMJSON.zpdicOnlineDecoder),
   });
-
-  static otmDecoder: Decoder<Otm> = union(
-    object({
-      words: array(OTMJSON.wordDecoder),
-      version: optional(number()),
-      zpdic: optional(OTMJSON.zpdicDecoder),
-    }),
-    object({
-      words: array(OTMJSON.wordDecoder),
-      version: optional(number()),
-      zpdic: optional(OTMJSON.zpdicDecoder),
-      zpdicOnline: object({
-        explanation: string(),
-        enableMarkdown: constant(false),
-      }),
-    }),
-    OTMJSON.otmWithMarkdownDecoder,
-  );
 
   static parse = (
     text: string,

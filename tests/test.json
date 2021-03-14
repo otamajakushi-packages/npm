@@ -311,5 +311,6 @@
         "explanation": "OTM-JSON辞書のサンプル辞書です。  \n[Unlicense](http://unlicense.org/)で公開されています。  \nテストコードを書くときとかにご自由にお使いください。\n\nたまたま256番目の辞書になってしまいました。\n",
         "enableMarkdown": true
     },
+    "humanLanguage": false,
     "version": 2
 }
