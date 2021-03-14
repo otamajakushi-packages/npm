@@ -11,5 +11,4 @@ export type Word = {
   contents: Content[];
   variations: Variation[];
   relations: Relation[];
-  [prop: string]: unknown;
 };
