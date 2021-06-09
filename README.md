@@ -23,6 +23,10 @@ See also [otamajakushi-sample (Japanese)](https://github.com/skytomo221/otamajak
 
 ## Version
 
+### Version 1.2.0
+
+- "plainInformationTitles" is nullable
+
 ### Version 1.1.0
 
 - Add "zpdicOnline"

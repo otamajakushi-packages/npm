@@ -1,6 +1,6 @@
 {
   "name": "otamajakushi",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Otamajakushi is a library which parses OTM-JSON (OneToMany-JSON)",
   "main": "dist/index.js",
   "scripts": {

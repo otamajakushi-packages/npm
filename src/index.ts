@@ -61,7 +61,7 @@ class OTMJSON {
 
   static zpdicDecoder: Decoder<Zpdic> = object({
     alphabetOrder: optional(string()),
-    plainInformationTitles: optional(array(string())),
+    plainInformationTitles: optional(union(constant(null), array(string()))),
     informationTitleOrder: optional(union(constant(null), array(string()))),
     defaultWord: optional(union(constant(null), OTMJSON.wordDecoder)),
   });
