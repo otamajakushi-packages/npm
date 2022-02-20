@@ -21,8 +21,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Checkout samples repo
+      uses: actions/checkout@v2
       with:
-        submodules: recursive
+        repository: otamajakushi-packages/samples
+        path: samples
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
