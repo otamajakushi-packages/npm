@@ -4,13 +4,13 @@ import { Otm } from '../src/Otm';
 
 describe('OTMJSON', (): void => {
   test('OTMJSON.parse', (): void => {
-    const json = fs.readFileSync('../samples/sample.otm.json', 'utf8');
+    const json = fs.readFileSync('samples/sample.otm.json', 'utf8');
     const dictionary = OTMJSON.parse(json);
     expect(dictionary.words.length).toBe(8);
   });
 
   test('OTMJSON.parse 2', (): void => {
-    const json = fs.readFileSync('../samples/sample.otm.json', 'utf8');
+    const json = fs.readFileSync('samples/sample.otm.json', 'utf8');
     const dictionary = OTMJSON.parse(json);
     expect(dictionary.words[0].contents[0].markdown).toBe(
       'C言語で `(*ptr)++;` に相当する。',
@@ -28,7 +28,7 @@ describe('OTMJSON', (): void => {
   }
 
   test('OTMJSON.run', (): void => {
-    const json = fs.readFileSync('../samples/sample.otm.json', 'utf8');
+    const json = fs.readFileSync('samples/sample.otm.json', 'utf8');
     const result = OTMJSON.run(json);
     if (result.ok) {
       const dictionary = result.result;
